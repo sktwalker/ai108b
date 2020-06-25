@@ -1,0 +1,49 @@
+import numpy as np
+
+map = np.array  ([(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+                  (0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+                  (1, 1, 1, 1, 1, 1, 1, 0, 1, 1),
+                  (1, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+                  (1, 0, 1, 1, 0, 1, 1, 1, 1, 1),
+                  (1, 0, 0, 1, 0, 1, 0, 0, 0, 1),
+                  (1, 0, 1, 1, 0, 1, 0, 1, 0, 1),
+                  (1, 0, 1, 1, 1, 1, 0, 1, 0, 1),
+                  (1, 0, 0, 0, 0, 0, 0, 1, 0, 1),
+                  (1, 1, 1, 1, 1, 1, 1, 1, 0, 1)])#借用洛飛的地圖
+point = [1, 0]#老鼠初始位置
+map[point[0]][point[1]] = 2
+dSum = 0
+
+point_list = []
+
+def sumofDirection():#判斷前後左右的路，算出有幾個方向可以前進，儲存可前進的方向
+    global dSum
+    dSum = 0
+    if(map[point[0]-1][point[1]] == 0):dSum += 1
+    if(map[point[0]][point[1]+1] == 0):dSum += 1
+    if(map[point[0]+1][point[1]] == 0):dSum += 1
+    if(map[point[0]][point[1]-1] == 0):dSum += 1
+
+def go():
+    global point, point_list
+    sumofDirection()
+    if(dSum > 1):point_list.append([point[0], point[1]])
+    if(dSum != 0):#有至少一條路可走
+        if(map[point[0]-1][point[1]] == 0):point[0]-=1
+        elif(map[point[0]][point[1]+1] == 0):point[1]+=1
+        elif(map[point[0]+1][point[1]] == 0):point[0]+=1
+        elif(map[point[0]][point[1]-1] == 0):point[1]-=1
+    elif(len(point_list) > 0):#當前無路可走時，有至少一保存節點可重走
+        savedNode = point_list.pop()
+        point[0] = savedNode[0]
+        point[1] = savedNode[1]
+    else:#沒有終點或已抵達終點
+        return False
+    map[point[0]][point[1]] = 2
+
+    return True
+
+while(go()):
+    print("-----")
+    print(map)
+
