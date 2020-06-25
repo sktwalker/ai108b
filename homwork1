@@ -1,0 +1,16 @@
+import gd3
+import numpy
+import math
+
+andGateAnswer = [0,0,0,1]
+
+def gap(point):
+
+    [w1,w2,c] = point #ax+by+c
+    andGuessAnswer = [(1.0/(1.0+math.exp(-c))), (1.0/(1.0+math.exp(-(w2+c)))), (1.0/(1.0+math.exp(-(w1+c)))), (1.0/(1.0+math.exp(-(w1+w2+c))))]#取自然數
+    delta = numpy.array([(andGuessAnswer[0]-andGateAnswer[0]), (andGuessAnswer[1]-andGateAnswer[1]),(andGuessAnswer[2]-andGateAnswer[2]), (andGuessAnswer[3]-andGateAnswer[3])])#判斷差值(歐式距離)
+    print('o0={:.3f} o1={:.3f} o2={:.3f} o3={:.3f}'.format(andGuessAnswer[0],andGuessAnswer[1],andGuessAnswer[2],andGuessAnswer[3]))#顯示結果
+    return numpy.linalg.norm(delta, 2)
+
+p = [0.0, 0.0, 0.0] # 從初始值開始
+gd3.gradientDescendent(gap, p, max_loops=10000)
