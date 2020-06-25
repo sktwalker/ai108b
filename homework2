@@ -1,0 +1,16 @@
+from net import Net
+net = Net()
+
+x = net.variable(1)
+y = net.variable(2)
+z = net.variable(3)#初始值x = 1, y = 2, z = 3
+
+squareX = net.mul(x, x)
+squareY = net.mul(y, y)
+squareZ = net.mul(z, z)
+
+o1 = net.add(squareX, squareY)
+o = net.add(o1, squareZ)
+net.gradient_descendent()
+
+print('x=', x.v, 'y=', y.v, 'z=', z.v)
