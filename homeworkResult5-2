@@ -1,0 +1,23 @@
+dfn(sin, 0 pi/4)= 0.7071067811865476
+dfn(sin, 1 pi/4)= 0.70710678000796
+dfn(sin, 2 pi/4)= -0.7071067842367995
+dfn(sin, 3 pi/4)= -0.7071010443837622
+dfn(sin, 4 pi/4)= 1.1796119636642288
+dfn(sin, 5 pi/4)= -693.8893903907228
+dfn(sin, 6 pi/4)= -41633363.42344337
+dfn(sin, 7 pi/4)= 69388939039.07228
+dfn(sin, 8 pi/4)= 3729655473350135.5
+dfn(sin, 9 pi/4)= -6.505213034913026e+18
+PS C:\Users\74185\Desktop\ccc\ai\python\08-scientific\calculus> python .\diffn.py-----以上為更改前，下為更改後
+df(sin, pi/4)= 0.6780100988420897
+dfn(sin, 0 pi/4)= 0.7071067811865476
+dfn(sin, 1 pi/4)= 0.6780100988420897
+dfn(sin, 2 pi/4)= -0.6501107136329157
+dfn(sin, 3 pi/4)= -0.6233593580716467
+dfn(sin, 4 pi/4)= 0.5977087919749394
+dfn(sin, 5 pi/4)= 0.5731137190421053
+dfn(sin, 6 pi/4)= -0.5495307068664402
+dfn(sin, 7 pi/4)= -0.5269181102379817
+dfn(sin, 8 pi/4)= 0.5052359976023125
+dfn(sin, 9 pi/4)= 0.48444608054543736
+PS C:\Users\74185\Desktop\ccc\ai\python\08-scientific\calculus>
