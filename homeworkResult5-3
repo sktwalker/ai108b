@@ -1,0 +1,2 @@
+PS C:\Users\74185\Desktop\ccc\ai\python\08-scientific\diffequation> python .\homework5-3.py
+Eq(v(t), exp((C1 - t/R)/C))
