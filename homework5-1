@@ -1,0 +1,43 @@
+import math
+
+def root2(a,b,c):
+    t = b*b - 4*a*c
+    if (t < 0):
+        t = abs(t)
+        facterList = []
+        findFacter(t, facterList)
+        ans = findInteger(facterList)
+        if(ans[1] != 0):string = "("+ str(-b) + "±" + str(ans[0])+"√"+str(ans[1])+"i"+")/"+str(2*a)
+        else:string = "("+ str(-b) + "±" + str(ans[0])+"i"+")/"+str(2*a)
+        return string
+    t2 = math.sqrt(t)
+    return [(-b+t2)/(2*a), (-b-t2)/(2*a)]
+
+
+def findFacter(num, facterList):
+    n = num +1
+    for i in range(2, n):
+        if(num % i == 0):
+            facterList.append(i)
+            num /= i
+            i = 2
+            findFacter(int(num), facterList)
+            break
+        elif(num == 1):
+            break
+
+def findInteger(facterList):
+    integer = 1
+    plural = 1
+    for i in range(0, len(facterList)-1):
+        if(facterList[i] != facterList[i+1]):integer *= facterList[i]
+        else:
+            plural *= facterList[i]
+            facterList[i] = 1
+            facterList[i+1] = 1
+    return [plural, integer]
+
+a = 2
+b = -10
+c = 50
+print("root of "+str(a)+"x^2+"+str(b)+"x+"+str(c)+"=", root2(a,b,c))
