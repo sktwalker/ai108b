@@ -1,0 +1,29 @@
+# https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.fft.html
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+np.set_printoptions(precision=4, suppress=True)
+freq = random.randint(0,10)
+t = np.arange(-10*np.pi, 10*np.pi, 0.1*np.pi)
+# ft = 10*np.sin(t)
+
+ft = 10*np.cos(freq*t)
+fi = np.fft.ifft(ft)#將時域轉為頻域
+fx = np.fft.fft(fi)
+fx = fx/10
+fx = np.arccos(fx)
+fx /= t
+max = 0
+for i in range(len(fx)):
+    if(fx[i]>max):max = fx[i]
+
+print('ft=', ft)
+print('fi=', fi)
+
+plt.plot(t,ft,label="$y = 10 sin(f x)$", color="red", linewidth=2)
+plt.plot(t,fi,label="ifft: y$", color="blue", linewidth=2)
+plt.plot(t,fx,label="ifft: y$", color="green", linewidth=0.5)
+plt.show()
+
+print(int(max), freq)
+
