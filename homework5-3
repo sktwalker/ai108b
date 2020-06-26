@@ -1,0 +1,6 @@
+from sympy import Function, dsolve, Eq, Derivative, sin, cos, symbols
+
+v = Function('v')
+c, r, t = symbols('C R t')
+a = c * Derivative(v(t)) + v(t)/r
+print(dsolve(a, v(t)))
