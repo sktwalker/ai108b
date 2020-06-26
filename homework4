@@ -1,0 +1,32 @@
+import random as r
+
+n = ['石獅子', '適施氏']
+
+def S():
+    return N0() + VP()
+
+def NP():
+    return DET() + N2()
+
+def VP():
+    return V() + N1() + '的' + NP()
+
+def N0():
+    return n.pop(r.choice(range(len(n))))
+
+def N1():
+    return r.choice(n) 
+
+def N2():
+    return r.choice(['獅屍', '石獅子', '石寺', '澀柿子', '蝨子', '死獅子'])
+
+def V():
+    return r.choice(['試釋', '視', '誓食', '恃'])
+
+def DET():
+    return r.choice(['四十四', '四十', '十四'])
+
+print(S(),end='')
+
+while(r.choice([0,1])==0) :
+    print('，' + VP(),end='')
